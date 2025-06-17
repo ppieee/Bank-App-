@@ -16,11 +16,11 @@ if submit:
             st.session_state.account.deposit(amount)
             st.success('Deposited ${amount:.2f}')
             
+        if operation == 'Withdraw':
+            st.session_state.account.withdraw(amount):
+            st.success(f'Withdrew ${amount:.2f}')
         else:
-            if st.session_state.account.withdraw(amount):
-                st.success(f'Withdrew ${amount:.2f}')
-            else:
-                st.error('withdrawal failed')
+            st.error('withdrawal failed')
 
 st.write(f'Current Balance : **${st.session_state.account.balance:.2f}')
 
