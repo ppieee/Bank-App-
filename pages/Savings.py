@@ -14,15 +14,14 @@ with st.form ('transaction_form'):
 if submit:
     with st.spinner('Processing...'):
         if operation == 'Deposit':
-            if st.session_state.account.deposit(amount):
-                st.success(f'Deposited ${amount:.2f}')
-            else:
-                st.error('Invalid deposit amount')
-        if operation == 'Withdraw':
-            if st.session_state.account.withdraw(amount):
-                st.success(f'Withdrew ${amount:.2f}')
-            else:
-                st.error('withdrawal failed')
+            st.session_state.account.deposit(amount)
+            st.success(f'Deposited ${amount:.2f}')
+            
+        if operation == 'Withdrawal':
+            st.session_state.account.withdraw(amount)
+            st.success(f'Withdrew ${amount:.2f}')
+        else:
+            st.error('withdrawal failed')
 st.write(f'Current Balance : **${st.session_state.account.balance:.2f}')
 st.write(f'Withdrawal limit: **${st.session_state.account.withdrawal_limit:.2f}')
 
