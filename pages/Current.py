@@ -13,10 +13,9 @@ with st.form('transaction_form'):
 if submit:
     with st.spinner('Processing...'):
         if operation == 'Deposit':
-            if st.session_state.account.deposit(amount):
-                st.success('Deposited ${amount:.2f}')
-            else:
-               print ('Invalid deposit amount')
+            st.session_state.account.deposit(amount)
+            st.success('Deposited ${amount:.2f}')
+            
         else:
             if st.session_state.account.withdraw(amount):
                 st.success(f'Withdrew ${amount:.2f}')
